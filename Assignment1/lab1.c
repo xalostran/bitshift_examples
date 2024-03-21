@@ -6,11 +6,11 @@
 volatile uint8_t *ddrb = (volatile uint8_t *)0x24;
 volatile uint8_t *portb = (volatile uint8_t *)0x25;
 
-unsigned long previousMillis1 = 0; // led 1
-unsigned long previousMillis2 = 0; // led 2
-unsigned long previousMillis3 = 0; // led 3
-unsigned long interval = 1000;     // intervall för alla LEDs
-unsigned long blinkDuration = 100; // Blink duration
+unsigned long previousMillis1 = 1000; // led 1
+unsigned long previousMillis2 = 1000; // led 2
+unsigned long previousMillis3 = 1000; // led 3
+unsigned long interval = 1000;        // intervall för alla LEDs
+unsigned long blinkDuration = 100;    // Blink duration
 
 void setup()
 {
