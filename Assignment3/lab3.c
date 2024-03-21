@@ -19,11 +19,11 @@ int buttonCount = 0;
 
 void setup()
 {
-    // Set LED pins as outputs
+    // Sätt LED pins som outputs
     *ddrb |= (1 << led1);
     *ddrb |= (1 << led2);
     *ddrb |= (1 << led3);
-    *ddrb |= (1 << led4); // Built-in LED
+    *ddrb |= (1 << led4); // inbyggd LED
 
     *portd |= (1 << button1);
     *ddrd &= ~(1 << button1);
@@ -37,12 +37,12 @@ void setup()
     *portd |= (1 << button4);
     *ddrd &= ~(1 << button4);
 
-    // Set button pins as inputs
+    // sätt knapp pins som inputs
 }
 
 void loop()
 {
-    // Read button states
+    // läs knapp status
     int isButton1 = !(*pind & (1 << button1));
     int isButton2 = !(*pind & (1 << button2));
     int isButton3 = !(*pind & (1 << button3));
@@ -51,7 +51,7 @@ void loop()
     if (isButton1 || isButton2 || isButton3)
         buttonCount++;
 
-    // Control LED states based on button presses
+    // kontrollera LED status baserat på knapp tryck
     if (isButton1)
         *portb |= (1 << led1);
     else

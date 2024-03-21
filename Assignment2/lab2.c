@@ -17,11 +17,11 @@ volatile uint8_t *pind = (volatile uint8_t *)0x29;
 
 void setup()
 {
-    // Set LED pins as outputs
+    // sätt LED pins som outputs
     *ddrb |= (1 << led1);
     *ddrb |= (1 << led2);
     *ddrb |= (1 << led3);
-    *ddrb |= (1 << ledBuiltIn); // Built-in LED
+    *ddrb |= (1 << ledBuiltIn); // inbyggd LED
 
     *portd |= (1 << button1);
     *ddrd &= ~(1 << button1);
@@ -35,18 +35,18 @@ void setup()
     *portd |= (1 << button4);
     *ddrd &= ~(1 << button4);
 
-    // Set button pins as inputs
+    // sätt knapp pins som inputs
 }
 
 void loop()
 {
-    // Read button states
+    // läs knapp status
     int isButton1 = !(*pind & (1 << button1));
     int isButton2 = !(*pind & (1 << button2));
     int isButton3 = !(*pind & (1 << button3));
     int isButton4 = !(*pind & (1 << button4));
 
-    // Control LED states based on button presses
+    // kontrollera LED status baserat på knapp tryck
     if (isButton1)
     {
         *portb |= (1 << led1);
