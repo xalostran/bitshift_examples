@@ -8,12 +8,12 @@
 #define button3 4
 #define button4 5
 
-volatile uint8_t *ddrb = (volatile uint8_t *)0x24;
-volatile uint8_t *portb = (volatile uint8_t *)0x25;
+volatile uint8_t *ddrb = (volatile uint8_t *)0x24;  // DDR för portb
+volatile uint8_t *portb = (volatile uint8_t *)0x25; // portb register för kontroll av utgång
 
 volatile uint8_t *ddrd = (volatile uint8_t *)0x2A;
 volatile uint8_t *portd = (volatile uint8_t *)0x2B;
-volatile uint8_t *pind = (volatile uint8_t *)0x29;
+volatile uint8_t *pind = (volatile uint8_t *)0x29; // register för att läsa in data
 
 void setup()
 {
@@ -23,8 +23,8 @@ void setup()
     *ddrb |= (1 << led3);
     *ddrb |= (1 << ledBuiltIn); // inbyggd LED
 
-    *portd |= (1 << button1);
-    *ddrd &= ~(1 << button1);
+    *portd |= (1 << button1); // aktivera pull-up resistor
+    *ddrd &= ~(1 << button1); // sätt utgång för knapp till inbyggd led
 
     *portd |= (1 << button2);
     *ddrd &= ~(1 << button2);
@@ -41,7 +41,7 @@ void setup()
 void loop()
 {
     // läs knapp status
-    int isButton1 = !(*pind & (1 << button1));
+    int isButton1 = !(*pind & (1 << button1)); // kontrollera knapp för led på portb
     int isButton2 = !(*pind & (1 << button2));
     int isButton3 = !(*pind & (1 << button3));
     int isButton4 = !(*pind & (1 << button4));
