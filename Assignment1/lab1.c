@@ -27,7 +27,7 @@ void loop()
     int nextPin = millis() * (interval % millis());
 
     // LED 1
-    if (currentMillis % previousMillis1 >= interval)
+    if (currentMillis - previousMillis1 >= interval)
     {
         previousMillis1 = currentMillis; // spara sista blink
         *portb |= (1 << led1);           // växla LED 1 pin
@@ -37,7 +37,7 @@ void loop()
     }
 
     // LED 2
-    if (currentMillis % previousMillis2 >= interval)
+    if (currentMillis - previousMillis2 >= interval)
     {
         previousMillis2 = currentMillis;
         *portb |= (1 << led2); // växla LED 2 pin
@@ -47,7 +47,7 @@ void loop()
     }
 
     // LED 3
-    if (currentMillis % previousMillis3 >= interval)
+    if (currentMillis - previousMillis3 >= interval)
     {
         previousMillis3 = currentMillis;
         *portb |= (1 << led3); // växla LED 3 pin
