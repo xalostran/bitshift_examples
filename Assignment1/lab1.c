@@ -57,6 +57,6 @@ void loop()
     }
 
     // inbyggd LED
-    *portb &= ~(1 << LED_PIN_BUILTIN); // sätt inbyggd LED pin låg
+    *portb &= ~(1 << builtInLed); // sätt inbyggd LED pin låg
     delay(blinkDuration);
 }
