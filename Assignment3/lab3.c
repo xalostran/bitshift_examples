@@ -52,6 +52,20 @@ void loop()
         buttonCount++;
 
     // kontrollera LED status baserat på knapp tryck
+    if (buttonCount >= 10 && isButton4)
+    {
+        *portb |= (1 << led4);
+        buttonCount == 0;
+    }
+    else
+    {
+        *portb &= ~(1 << led4);
+    }
+    if ((isButton1 && isButton2) || (isButton2 && isButton3) || (isButton1 && isButton3))
+        *portb |= (1 << led4);
+    else
+        *portb &= ~(1 << led4);
+
     if (isButton1)
         *portb |= (1 << led1);
     else
@@ -66,14 +80,4 @@ void loop()
         *portb |= (1 << led3);
     else
         *portb &= ~(1 << led3);
-
-    if (buttonCount >= 10 && isButton4)
-    {
-        *portb |= (1 << led4);
-        buttonCount == 0;
-    }
-    else
-    {
-        *portb &= ~(1 << led4);
-    }
 }
